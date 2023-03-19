@@ -2,14 +2,13 @@ const baseUrl = "http://localhost:3000";
 
 // Get all the user from the database
 export const getUser = async () =>{
-        const response = await fetch(`${baseUrl}/api/users`)
+    const response = await fetch(`${baseUrl}/api/users`)
     const json = await response.json(); 
     return json;
 }
 
 // Posting new user
 export const addUser = async (formData) => {
-    async function getStaticProps(context){
         try{
             const Options = {
                 method: 'POST',
@@ -25,8 +24,7 @@ export const addUser = async (formData) => {
             return(error)
         }
     }
-    getStaticProps(); 
-}
+    
 
 // Update User
 export async function updateUser (userId, formData) {
@@ -68,7 +66,30 @@ export async function deleteUser (userId){
     return getStaticProps(); 
 }
 
+// User Authentication
 
+export const getUserAn = async () =>{
+    const response = await fetch(`${baseUrl}/api/users/authenticatedUser`)
+    const json = await response.json(); 
+    return json;
+}
+
+export const addUserAn = async (formData) => {
+    try{
+        const Options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }
+        const response = await fetch(`${baseUrl}/api/users/authenticatedUser`, Options); 
+        const json = await response.json(); 
+        return json; 
+    }catch(error){
+        return(error)
+    }
+}
 
 
 

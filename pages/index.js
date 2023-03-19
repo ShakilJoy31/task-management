@@ -1,16 +1,9 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
-import { useState } from 'react'
-import Table from '../components/Table';
-import Form from '../components/Form';
+import SignUp from '../components/SignUp';
+import Login from '../components/Login';
 const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-  const [isDataChanged, setIsDataChanged] = useState(false);
-  const [isFormActive, setIsFormActive] = useState(false);
-  const [gotData, setGotData] = useState({});
-  const [isEditButtonPressed, setIsEditButtonPressed] = useState(false); 
-  const [pressedUserId, setPressedUserId] = useState(''); 
-  console.log(pressedUserId); 
   return (
     <>
       <Head>
@@ -20,12 +13,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='mt-4 lg:mx-16 md:mx-6'>
+        
         <div>
-          <Form isDataChanged={isDataChanged} setIsDataChanged={setIsDataChanged} isFormActive={isFormActive} setIsFormActive={setIsFormActive} setGotData={setGotData} isEditButtonPressed={isEditButtonPressed} setIsEditButtonPressed={setIsEditButtonPressed} pressedUserId={pressedUserId}></Form>
+          <h1 className='flex justify-center text-5xl text-white'>User Authentication</h1>
+        <div className='flex min-h-screen mt-12 justify-evenly'>
+        <SignUp></SignUp>
+        <Login></Login>
         </div>
-        <div className='flex justify-center mb-8'>
-          <Table setIsDataChanged={setIsDataChanged} setIsFormActive={setIsFormActive} gotData={gotData} setIsEditButtonPressed={setIsEditButtonPressed} setPressedUserId={setPressedUserId}></Table>
         </div>
+
       </main>
     </>
   )

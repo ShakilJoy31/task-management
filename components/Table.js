@@ -11,36 +11,12 @@ export default function Table({setIsDataChanged, setIsFormActive, gotData, setIs
     const [edit, setEdit] = useState();
     const [data, setData] = useState([]);
     const [deletedUserId, setDeletedUserId] = useState('');
-    // const [isLoading, setIsLoading] = useState('');
-    // const [isError, setIsError] = useState('');
-    // const [error, setError] = useState('');
-    // const { isLoading, isError, data, error } = useQuery('users', getUser)
-    // if(isDataChanged){
-    //     const { isLoading, isError, data, error } = useQuery('users', getUser)
-    //     setIsLoading(isLoading)
-    //     setIsError(isError)
-    //     setError(error)
-    //     setData(data)
-    // }
-    // if(isLoading) { 
-    //     return <div>Employee is loading</div>;
-    // } 
-    // if(isError) { 
-    //     return <div>Got error {error}</div>; 
-    // }
 
     const formData = gotData; 
 
     useEffect(()=>{
      getUser().then(res => setData(res))
     }, [data])
-
-    // useEffect(()=>{
-    //     if(formData){
-    //         const user = updateUser(userId, formData).then(res => console.log(res));
-    //         console.log(user); 
-    //     }
-    // },[])
     
 
     const handleSuccessDelate = (userId) => {
@@ -64,10 +40,9 @@ export default function Table({setIsDataChanged, setIsFormActive, gotData, setIs
                     <thead>
                         <tr>
                             <th>Srl No.</th>
-                            <th><span className="flex justify-center">Name with Photo</span></th>
-                            <th><span className="flex justify-center">Email</span></th>
-                            <th><span className="flex justify-center">Salary</span></th>
-                            <th><span className="flex justify-center">Date of birth</span></th>
+                            <th><span className="flex justify-center">Title</span></th>
+                            <th><span className="flex justify-center">Description</span></th>
+                            <th><span className="flex justify-center">Date</span></th>
                             <th><span className="flex justify-center">Action</span></th>
                         </tr>
                     </thead>
@@ -76,25 +51,12 @@ export default function Table({setIsDataChanged, setIsFormActive, gotData, setIs
                             data?.map((singleData, index) => <tr>
                                 <td>{index+1}</td>
                                 <td>
-                                    <div className="">
-                                        <div className="flex justify-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="w-8 h-8 mask mask-squircle">
-                                                    <img src={singleData.photo} alt="" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className=""><span className="block mx-auto font-bold">{singleData.name}</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <span className="flex justify-center">{singleData.title}</span>
                                 </td>
                                 <td>
-                                    <span className="flex justify-center">{singleData.email}</span>
+                                    <span className="flex justify-center">{singleData.description}</span>
                                 </td>
-                                <td><span className="flex justify-center">{singleData.salary}</span></td>
-
-                                <td><span className="flex justify-center">{singleData.date}</span></td>
+                                <td><span className="flex justify-center">{singleData.dueDate}</span></td>
                                 <th>
                                     <div className="flex justify-center">
                                         <label onClick={() => {

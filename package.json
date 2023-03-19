@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,7 +17,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-    "react-query": "^3.39.2"
+    "react-query": "^3.39.2",
+    "react-toastify": "^9.1.1",
+    "toastify": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

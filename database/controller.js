@@ -1,4 +1,5 @@
 import Users from "../model/user"
+import UsersAn from "../model/userAuthentication"
 
 export async function getUsers (req, res) {
     try{
@@ -68,5 +69,36 @@ export async function getUser(req, res) {
         res.status(404).json({error: 'User id is not found.'}); 
     }catch(error){
         res.status(404).json({error: 'Operation failed to get a specific user.'}); 
+    }
+}
+
+
+
+// Authenticated User.....
+export async function getUsersAn (req, res) {
+    try{
+        const users = await UsersAn.find({}); 
+        if(!users){
+            return res.status(404).json({error: 'Data not found'})
+        }
+        console.log(users); 
+        res.status(200).json(users)
+    }catch(error){
+        res.status(404).json({error: 'Error while fetching data from the database.'})
+    }
+}
+
+
+export async function postUsersAn (req, res) {
+    try{
+        const formData = req.body; 
+        if(!formData){
+            return res.status(404).json({error: 'Form data is not provided....!'}); 
+        }
+        UsersAn.create(formData, (error, data)=>{
+            return res.status(200).json(data); 
+        })
+    }catch(error){
+        return res.status(404).json({error: 'Operation failed'}); 
     }
 }
