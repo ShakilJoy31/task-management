@@ -48,7 +48,7 @@ export default function Table({setIsDataChanged, setIsFormActive, gotData, setIs
                     </thead>
                     <tbody>
                         {
-                            data?.map((singleData, index) => <tr>
+                            data?.map((singleData, index) => <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>
                                 <span className="flex justify-center">{singleData.title}</span>

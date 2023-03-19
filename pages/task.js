@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from '../components/Form';
 import Table from '../components/Table';
 
-const task = () => {
+const Task = () => {
     const [isDataChanged, setIsDataChanged] = useState(false);
     const [isFormActive, setIsFormActive] = useState(false);
     const [gotData, setGotData] = useState({});
@@ -22,4 +22,4 @@ const task = () => {
     );
 };
 
-export default task;
+export default Task;
